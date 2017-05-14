@@ -1,6 +1,6 @@
 Game = function() {
   this.roller = roll
-  // this.updateScores = ScoreUpdater
+  this.updateScores = scoreUpdater
   this.bowl = bowl
   this.ballPins = []
   this.currentFrame = 1
@@ -15,4 +15,4 @@ Game = function() {
   Game.prototype.runningTotal = function() {
     return this.frames.reduce(function(accumulator, item) {
       return accumulator + item.finalFrameScore }, 0);
-    };
+  };
