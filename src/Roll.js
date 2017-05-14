@@ -1,4 +1,3 @@
 Roll = function(pinsStanding) {
-  max = Math.floor(pinsStanding);
-  return Math.floor(Math.random() * (max - 0)) + 0;
+  return Math.floor(Math.random() * (pinsStanding + 1));
 };

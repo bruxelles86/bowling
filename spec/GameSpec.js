@@ -21,8 +21,13 @@ describe("Game", function() {
   });
 
   it("records the number of pins knocked down after each bowl", function() {
-    game.bowl; game.bowl
+    game.bowl(); game.bowl();
     expect(game.ballPins[0] >= 0 && game.ballPins[0] <= 10).toBeTruthy();
     expect(game.ballPins[1] >= 0 && game.ballPins[1] <= 10).toBeTruthy();
+  });
+
+  it("increments the current frame number after finishing a frame", function() {
+    game.bowl(); game.bowl();
+    expect(game.currentFrame).toEqual(2);
   });
 });

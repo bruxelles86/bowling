@@ -13,14 +13,17 @@ Game = function() {
   Game.prototype.runningTotal = function() {
     return this.frames.reduce(function(accumulator, item) {
       return accumulator + item.finalFrameScore }, 0);
-  };
+    };
 
   Game.prototype.bowl = function() {
-    // I want this to throw one ball via the current frame, and push to this.ballPins.
-    // Afterwards, it checks if the frame is finished, and increments currentFrame if so
-    // Then it runs an 'update score' method
-  };
+    this.frames[this.currentFrame - 1].takeTurn()
 
+    if(this.frames[this.currentFrame - 1].rollTwo === null) { this.ballPins.push(this.frames[this.currentFrame - 1].rollOne)
+    } else { this.ballPins.push(this.frames[this.currentFrame - 1].rollTwo)}
+
+    if(this.frames[this.currentFrame - 1].isFinished) { this.currentFrame++ }
+  };
+    
   Game.prototype.updateScores = function() {
     // This will iterate through the frames, and where any are 'finished', marked as either strike
     // or spare, but with a final score of 0:
