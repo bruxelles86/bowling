@@ -39,15 +39,18 @@ describe("Frame", function() {
 
   it("Records a spare if ten pins are knocked down over two throws", function() {
     frame = new Frame(1, Fakeroll2, 0);
-    frame.takeTurn()
-    frame.takeTurn()
+    frame.takeTurn(); frame.takeTurn();
     expect(frame.isSpare).toBe(true)
   });
 
   it("Records a final frame score after the second ball if total sore is under 10", function() {
     frame = new Frame(1, Fakeroll3, 0);
-    frame.takeTurn()
-    frame.takeTurn()
+    frame.takeTurn(); frame.takeTurn();
     expect(frame.finalFrameScore).toEqual(6);
+  });
+
+  it("Records the roll number of the first roll in each game", function() {
+    frame.takeTurn(0); frame.takeTurn(1); frame.takeTurn(2);
+    expect(frame.startingBallIndex).toEqual(2)
   });
 });

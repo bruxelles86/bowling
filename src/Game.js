@@ -1,5 +1,6 @@
 Game = function() {
   this.roller = Roll
+  // this.update = ScoreUpdater
   this.ballPins = []
   this.currentFrame = 1
   this.frames = [new Frame(1, this.roller), new Frame(2, this.roller),
@@ -16,18 +17,12 @@ Game = function() {
     };
 
   Game.prototype.bowl = function() {
-    this.frames[this.currentFrame - 1].takeTurn()
+    this.frames[this.currentFrame - 1].takeTurn(this.ballPins.length)
 
     if(this.frames[this.currentFrame - 1].rollTwo === null) { this.ballPins.push(this.frames[this.currentFrame - 1].rollOne)
     } else { this.ballPins.push(this.frames[this.currentFrame - 1].rollTwo)}
 
     if(this.frames[this.currentFrame - 1].isFinished) { this.currentFrame++ }
-  };
-    
-  Game.prototype.updateScores = function() {
-    // This will iterate through the frames, and where any are 'finished', marked as either strike
-    // or spare, but with a final score of 0:
-    // if 'spare', check whether array's [frame.startingBallNumber + 2] index exists. If so, set
-    // final score equal to this plus the two ball scores (i.e. 10)
-    // if 'strike', check whether frame.startingBallNumber + 1 *and* +2 both exist. Adjust score as above.
+
+    // need to run the score updater method here after each bowl
   };

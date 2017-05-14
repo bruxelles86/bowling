@@ -1,6 +1,6 @@
-Frame = function(frameNumber, Roll, ballnumber) {
-  this.startingBallNumber = ballnumber
-  this.frameNumber = frameNumber
+Frame = function(frameNumber, Roll) {
+  this.frameNumber = frameNumber;
+  this.startingBallIndex = null
   this.roll = Roll
   this.pinsStanding = 10
   this.rollOne = null; this.rollTwo = null;
@@ -9,7 +9,8 @@ Frame = function(frameNumber, Roll, ballnumber) {
   this.finalFrameScore = 0
 };
 
-Frame.prototype.takeTurn = function() {
+Frame.prototype.takeTurn = function(startingBallIndex) {
+  this.startingBallIndex = startingBallIndex
 
   if(this.rollOne === null) {
     this.rollOne = this.roll(this.pinsStanding);
@@ -18,7 +19,6 @@ Frame.prototype.takeTurn = function() {
     if(this.rollOne === 10) {
       this.isStrike = true; this.isFinished = true;
     }
-    return this.rollOne
   } else if(this.rollOne < 10 && this.rollTwo === null) {
     this.rollTwo = this.roll(this.pinsStanding);
     this.pinsStanding = this.pinsStanding - this.rollTwo
@@ -29,6 +29,5 @@ Frame.prototype.takeTurn = function() {
     } else if(this.rollOne + this.rollTwo < 10) {
       this.finalFrameScore = this.rollOne + this.rollTwo
     }
-    return this.rollTWo
   };
 };
