@@ -1,7 +1,7 @@
-Frame = function(frameNumber, Roll) {
+Frame = function(frameNumber, roller) {
   this.frameNumber = frameNumber;
   this.startingBallIndex = null
-  this.roll = Roll
+  this.roll = roller
   this.rollOne = null; this.rollTwo = null;
   this.isStrike = false; this.isSpare = false
   this.isFinished = false;

@@ -29,4 +29,11 @@ describe("Game", function() {
     expect(game.ballPins[0] >= 0 && game.ballPins[0] <= 10).toBeTruthy();
     expect(game.ballPins[1] >= 0 && game.ballPins[1] <= 10).toBeTruthy();
   });
+
+  it("calculates a total of 300 points for a perfect game", function() {
+      var game = new Game(function(parameter) { return 10; })
+      var times = 12;
+      for(var i=1; i <= times; i++){ game.bowl(); }
+      expect(game.runningTotal()).toEqual(300)
+  })
 });

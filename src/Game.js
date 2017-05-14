@@ -1,5 +1,5 @@
-Game = function() {
-  this.roller = roll
+Game = function(roller = roll) {
+  this.roller = roller
   this.updateScores = scoreUpdater
   this.bowl = bowl
   this.ballPins = []
