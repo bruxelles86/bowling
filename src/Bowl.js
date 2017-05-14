@@ -6,5 +6,5 @@ bowl = function() {
 
   if(this.frames[this.currentFrame - 1].isFinished) { this.currentFrame++ }
 
-  // need to run the score updater method here after each bowl
+  this.updateScores(this.ballPins)
 };
