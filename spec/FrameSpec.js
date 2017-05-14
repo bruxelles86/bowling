@@ -12,10 +12,6 @@ describe("Frame", function() {
     expect(frame.finalFrameScore).toEqual(0);
   });
 
-  it("receives a roll function that randomly knocks down remaining pins", function() {
-    expect(frame.roll(6) >= 0 && roll(6) <= 6).toBeTruthy();
-  });
-
   it("records the score after a first throw", function() {
     frame.takeTurn()
     expect(frame.rollOne).toEqual(jasmine.any(Number));
@@ -33,7 +29,7 @@ describe("Frame", function() {
     expect(frame.isSpare).toBe(true)
   });
 
-  it("Records a final frame score after the second ball if total sore is under 10", function() {
+  it("Records a final frame score after the second ball if total score is under 10", function() {
     frame = new Frame(1, Fakeroll3, 0);
     frame.takeTurn(); frame.takeTurn();
     expect(frame.finalFrameScore).toEqual(6);

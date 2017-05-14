@@ -8,7 +8,7 @@ Game = function() {
     new Frame(3, this.roller), new Frame(4, this.roller),
     new Frame(5, this.roller), new Frame(6, this.roller),
     new Frame(7, this.roller), new Frame(8, this.roller),
-    new Frame(9, this.roller), new Frame(10, this.roller)]
+    new Frame(9, this.roller), new FinalFrame(this.roller)]
 
   };
 

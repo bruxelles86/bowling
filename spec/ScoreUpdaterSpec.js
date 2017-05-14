@@ -36,4 +36,32 @@ describe("ScoreUpdater", function() {
     game.updateScores(game.ballPins);
     expect(game.frames[0].finalFrameScore).toEqual(30)
   });
+
+  it("gives frame 10 a score of 30 if three strikes are rolled", function() {
+    game.frames[9].startingBallIndex = 9; game.frames[9].isStrike = true;
+    game.ballPins = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
+    game.updateScores(game.ballPins);
+    expect(game.frames[9].finalFrameScore).toEqual(30)
+  });
+
+  it("gives frame 10 a score of 20 if a strike is rolled after a spare", function() {
+    game.frames[9].startingBallIndex = 9; game.frames[9].isSpare = true;
+    game.ballPins = [10, 10, 10, 10, 10, 10, 10, 10, 10, 6, 4, 10]
+    game.updateScores(game.ballPins);
+    expect(game.frames[9].finalFrameScore).toEqual(20)
+  })
+
+  it("gives frame 10 a score of 15 if five is scored after a spare", function() {
+    game.frames[9].startingBallIndex = 9; game.frames[9].isSpare = true;
+    game.ballPins = [10, 10, 10, 10, 10, 10, 10, 10, 10, 8, 2, 5]
+    game.updateScores(game.ballPins);
+    expect(game.frames[9].finalFrameScore).toEqual(15)
+  });
+
+  it("gives frame 10 a score of 23 if three is scored after two strikes", function() {
+    game.frames[9].startingBallIndex = 9; game.frames[9].isStrike = true;
+    game.ballPins = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 3]
+    game.updateScores(game.ballPins);
+    expect(game.frames[9].finalFrameScore).toEqual(23)
+  });
 });

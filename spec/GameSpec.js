@@ -11,7 +11,11 @@ describe("Game", function() {
 
   it("holds frames in an array", function() {
     expect(game.frames[0]).toEqual(jasmine.any(Frame));
-    expect(game.frames[9]).toEqual(jasmine.any(Frame));
+    expect(game.frames[8]).toEqual(jasmine.any(Frame));
+  });
+
+  it("holds a final frame in the last slot of the frames array", function() {
+    expect(game.frames[9]).toEqual(jasmine.any(FinalFrame));
   });
 
   it("records a running total for the score", function() {
