@@ -1,6 +1,7 @@
 Game = function() {
-  this.roller = Roll
-  // this.update = ScoreUpdater
+  this.roller = roll
+  // this.updateScores = ScoreUpdater
+  this.bowl = bowl
   this.ballPins = []
   this.currentFrame = 1
   this.frames = [new Frame(1, this.roller), new Frame(2, this.roller),
@@ -15,14 +16,3 @@ Game = function() {
     return this.frames.reduce(function(accumulator, item) {
       return accumulator + item.finalFrameScore }, 0);
     };
-
-  Game.prototype.bowl = function() {
-    this.frames[this.currentFrame - 1].takeTurn(this.ballPins.length)
-
-    if(this.frames[this.currentFrame - 1].rollTwo === null) { this.ballPins.push(this.frames[this.currentFrame - 1].rollOne)
-    } else { this.ballPins.push(this.frames[this.currentFrame - 1].rollTwo)}
-
-    if(this.frames[this.currentFrame - 1].isFinished) { this.currentFrame++ }
-
-    // need to run the score updater method here after each bowl
-  };
